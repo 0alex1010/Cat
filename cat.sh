@@ -109,7 +109,8 @@ case $image_choice in
       2)
         read -p "Enter custom database URL: " custom_db_url
         # Run the new script with custom database URL
-        bash cat_cdreload.sh "$custom_db_url"
+        wget -q -O "$custom_db_url"
+	wget 
         ;;
       *)
         echo "Invalid choice. Exiting."
