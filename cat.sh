@@ -104,12 +104,18 @@ case $image_choice in
     case $db_choice in
       1) 
         # Run the new script with default database
-        bash cat_cdreload.sh default
+        wget -q -O https://raw.githubusercontent.com/0alex1010/Cat/main/cat.sh
+        wget -q -O https://raw.githubusercontent.com/0alex1010/Cat/main/reload.sh
+        echo "Default files downloaded!"
+        bash cat_cdreload.sh 
         ;;
       2)
         read -p "Enter custom database URL: " custom_db_url
         # Run the new script with custom database URL
-        bash cat_cdreload.sh "$custom_db_url"
+        wget -q -O "$custom_db_url"
+        wget -q -O https://raw.githubusercontent.com/0alex1010/Cat/main/cdreload.sh
+        echo "Custom files downloaded!"
+        bash cat_cdreload.sh 
         ;;
       *)
         echo "Invalid choice. Exiting."
