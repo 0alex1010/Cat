@@ -1,5 +1,11 @@
 #!/bin/bash
 
+    # Check if cleanup.sh exists and delete it
+    rm cleanup.sh cat_reload.sh  # Delete unconditionally
+    clear                       # Clear the terminal after deleting
+
+    bash cat_reload.sh
+
 # Function to install ImageMagick
 install_imagemagick() {
   if ! command -v convert &> /dev/null; then
@@ -83,7 +89,3 @@ case $image_choice in
 	 echo "Reloaded cat.sh! Launching reload..."
 	 sleep 3
 	 clear
-
-    # Check if cleanup.sh exists and delete it
-      rm cleanup.sh cat_reload.sh
-      clear  # Clear the terminal after deleting
