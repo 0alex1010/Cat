@@ -1,11 +1,5 @@
 #!/bin/bash
 
-    # Check if cleanup.sh exists and delete it
-    rm cleanup.sh cat_reload.sh  # Delete unconditionally
-    clear                       # Clear the terminal after deleting
-
-    bash cat_reload.sh
-
 # Function to install ImageMagick
 install_imagemagick() {
   if ! command -v convert &> /dev/null; then
@@ -61,6 +55,11 @@ wget -q -O version.ver "https://raw.githubusercontent.com/0alex1010/Cat/main/Ver
 # Now read and display the version information
 echo Below this is the version of BuddyBud
 cat version.ver
+
+# Delete cleanup.sh and cat_reload.sh if they exist
+rm cleanup.sh cat_reload.sh
+clear
+
 #Ask for image thing
 echo "Select an image:"
 echo "1. Cat"
@@ -89,3 +88,13 @@ case $image_choice in
 	 echo "Reloaded cat.sh! Launching reload..."
 	 sleep 3
 	 clear
+
+    bash cat_reload.sh
+    ;;
+  *) echo "Invalid choice. Exiting."
+     exit 1
+     ;;
+esac
+
+# Install ImageMagick if necessary
+install_imagemagick
