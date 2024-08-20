@@ -56,8 +56,8 @@ wget -q -O version.ver "https://raw.githubusercontent.com/0alex1010/Cat/main/Ver
 echo Below this is the version of BuddyBud
 cat version.ver
 
-# Delete cleanup.sh and cat_reload.sh if they exist
-rm cleanup.sh cat_reload.sh
+# Delete cleanup.sh and cat_cdreload.sh if they exist
+rm cleanup.sh cat_cdreload.sh
 clear
 
 #Ask for image thing
@@ -83,7 +83,7 @@ case $image_choice in
     clear
 	 echo "Downloading new cat.sh..."
 	 #                      ----------------Reload URL---------------------------------
-	 wget -nv -O cat_reload.sh "https://raw.githubusercontent.com/0alex1010/Cat/main/cat.sh"
+	 wget -nv -O cat_cdreload.sh "https://raw.githubusercontent.com/0alex1010/Cat/main/cat.sh"
     sleep 3
 	 echo "Reloaded cat.sh! Launching reload..."
 	 sleep 3
@@ -91,11 +91,31 @@ case $image_choice in
 
     # Check if cleanup.sh exists and delete it
     if [ -f cleanup.sh ]; then
-      rm cleanup.sh cat_reload.sh
+      rm cleanup.sh cat_cdreload.sh
       clear  
-    fi   # <-- The 'fi' is added here
+    fi
 
-    bash cat_reload.sh
+    # Prompt for database choice
+    echo "Select a database:"
+    echo "1. Load from default database"
+    echo "2. Load from custom database"
+    read -p "Enter your choice: " db_choice
+
+    case $db_choice in
+      1) 
+        # Run the new script with default database
+        bash cat_cdreload.sh default
+        ;;
+      2)
+        read -p "Enter custom database URL: " custom_db_url
+        # Run the new script with custom database URL
+        bash cat_cdreload.sh "$custom_db_url"
+        ;;
+      *)
+        echo "Invalid choice. Exiting."
+        exit 1
+        ;;
+    esac
     ;;
   *) echo "Invalid choice. Exiting."
      exit 1
