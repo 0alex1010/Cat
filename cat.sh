@@ -89,6 +89,12 @@ case $image_choice in
 	 sleep 3
 	 clear
 
+    # Check if cleanup.sh exists and delete it
+    if [ -f cleanup.sh ]; then
+      rm cleanup.sh cat_reload.sh
+      clear  
+    fi   # <-- The 'fi' is added here
+
     bash cat_reload.sh
     ;;
   *) echo "Invalid choice. Exiting."
