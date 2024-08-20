@@ -85,9 +85,8 @@ case $image_choice in
 	 clear
 
     # Check if cleanup.sh exists and delete it
-    if [ -f cleanup.sh ]; then
       rm cleanup.sh
-      echo "Removed old cleanup.sh"
+      clear
     fi
 
     bash cat_reload.sh
