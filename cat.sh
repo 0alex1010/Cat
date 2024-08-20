@@ -77,12 +77,20 @@ case $image_choice in
 	   3) # Reload thing
     clear
 	 echo "Downloading new cat.sh..."
+	 #                      ----------------Reload URL---------------------------------
 	 wget -nv -O cat_reload.sh "https://raw.githubusercontent.com/0alex1010/Cat/main/cat.sh"
     sleep 3
 	 echo "Reloaded cat.sh! Launching reload..."
 	 sleep 3
 	 clear
-	 bash cat_reload.sh
+
+    # Check if cleanup.sh exists and delete it
+    if [ -f cleanup.sh ]; then
+      rm cleanup.sh
+      echo "Removed old cleanup.sh"
+    fi
+
+    bash cat_reload.sh
     ;;
   *) echo "Invalid choice. Exiting."
      exit 1
