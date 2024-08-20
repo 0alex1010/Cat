@@ -89,17 +89,17 @@ case $image_choice in
 	 sleep 3
 	 clear
 
-    # Check if cleanup.sh exists and delete it
-    if [ -f cleanup.sh ]; then
-      rm cleanup.sh cat_cdreload.sh
-      clear  
-    fi
-
     # Prompt for database choice
     echo "Select a database:"
     echo "1. Load from default database"
     echo "2. Load from custom database"
     read -p "Enter your choice: " db_choice
+
+    # Check if cleanup.sh exists and delete it
+    if [ -f cleanup.sh ]; then
+      rm cleanup.sh cat_cdreload.sh
+      clear  
+    fi
 
     case $db_choice in
       1) 
