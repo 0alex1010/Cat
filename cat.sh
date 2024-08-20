@@ -86,14 +86,4 @@ case $image_choice in
 
     # Check if cleanup.sh exists and delete it
       rm cleanup.sh cat_reload.sh
-      clear
-
-    bash cat_reload.sh
-    ;;
-  *) echo "Invalid choice. Exiting."
-     exit 1
-     ;;
-esac
-
-# Install ImageMagick if necessary
-install_imagemagick
+      clear  # Clear the terminal after deleting
